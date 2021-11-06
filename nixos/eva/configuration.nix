@@ -24,25 +24,26 @@
     ../modules/users.nix
   ];
 
-  systemd.network.networks."ethernet".extraConfig = ''
-    [Match]
-    Type = ether
+  #systemd.network.networks."ethernet".extraConfig = ''
+  #  [Match]
+  #  Type = ether
 
-    [Network]
-    DHCP = yes
-    LLMNR = true
-    LinkLocalAddressing = yes
-    LLDP = true
-    IPv6AcceptRA = true
-    IPForward = yes
+  #  [Network]
+  #  DHCP = yes
+  #  LLMNR = true
+  #  LinkLocalAddressing = yes
+  #  LLDP = true
+  #  IPv6AcceptRA = true
+  #  IPForward = yes
 
-    Address = 2a01:4f8:1c1c:9a9::1/128
-    Gateway = fe80::1
-    IPv6AcceptRA = no
-    IPForward = yes
-  '';
+  #  Address = 2a01:4f8:1c1c:9a9::1/128
+  #  Gateway = fe80::1
+  #  IPv6AcceptRA = no
+  #  IPForward = yes
+  #'';
 
   systemd.network.enable = true;
+  services.resolved.enable = false;
 
   # breaks loki
   networking.usePredictableInterfaceNames = false;
